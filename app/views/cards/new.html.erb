@@ -1,6 +1,3 @@
 <h1>新增卡片</h1>
 
-<form action="/cards" method="post">
-  Title <input type="text">
-  <button type="submit">新增</button>
-</form>
+<%= render 'form', card: @card %>
