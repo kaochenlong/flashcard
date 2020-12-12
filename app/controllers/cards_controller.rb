@@ -2,10 +2,12 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cards = Card.all
+    @cards = Card.order(id: :desc)
   end
 
   def show
+    @comment = Comment.new
+    @comments = @card.comments.order(id: :desc)
   end
 
   def new
@@ -16,7 +18,8 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
 
     if @card.save
-      redirect_to "/"
+      # flash[:notice] = "新增卡片成功"
+      redirect_to "/", notice: "新增卡片成功"
     else
       render :new
     end
@@ -27,7 +30,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to "/"
+      redirect_to "/", notice: '卡片更新成功'
     else
       render :edit
     end
@@ -35,7 +38,7 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
-    redirect_to "/"
+    redirect_to "/", notice: '卡片已刪除'
   end
 
   private

@@ -24,3 +24,16 @@
     border: 1px dotted gray;
   }
 }
+
+.comments {
+  li {
+    list-style: none;
+    font-size: 18px;
+    margin-top: 5px;
+    padding: 5px;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+}

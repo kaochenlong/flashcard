@@ -2,3 +2,17 @@
 <p>
   <%= @card.content %>
 </p>
+<hr>
+<%= form_for(@comment, url: card_comments_path(@card)) do |f| %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>
+
+<ul class="comments">
+<% @comments.each do |comment| %>
+  <li>
+    <%= link_to "刪除", comment, method: 'delete', data: {confirm: '確定刪除?'} %>
+    <%= comment.content %>
+  </li>
+<% end %>
+</ul>
