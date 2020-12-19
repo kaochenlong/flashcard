@@ -10,9 +10,6 @@
 
 <ul class="comments">
 <% @comments.each do |comment| %>
-  <li>
-    <%= link_to "刪除", comment, method: 'delete', data: {confirm: '確定刪除?'} %>
-    <%= comment.content %>
-  </li>
+  <%= render 'comments/comment', comment: comment %>
 <% end %>
 </ul>
