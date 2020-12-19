@@ -10,7 +10,9 @@
   </head>
 
   <body>
+    <%= render 'common/navbar' %>
     <p><%= notice %></p>
     <%= yield %>
+    <%= yield :bottom_js %>
   </body>
 </html>
