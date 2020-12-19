@@ -12,6 +12,17 @@ class CardsController < ApplicationController
     @comments = @card.comments.order(id: :desc)
   end
 
+  def like
+    card = Card.find(params[:id])
+    if current_user.like_cards.include?(card)
+      current_user.like_cards.delete(card)
+      render json: { status: 0 }
+    else
+      current_user.like_cards << card
+      render json: { status: 1 }
+    end
+  end
+
   def new
     @card = Card.new
   end
