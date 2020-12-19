@@ -9,7 +9,5 @@
 <% end %>
 
 <ul class="comments">
-<% @comments.each do |comment| %>
-  <%= render 'comments/comment', comment: comment %>
-<% end %>
+  <%= render @comments %>
 </ul>
