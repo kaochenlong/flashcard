@@ -1,13 +1,14 @@
-<h1>
+<h1 data-controller="icon" data-icon-card-id="<%= @card.id %>">
   <%= @card.title %>
-  <a href="#" class="like_btn" data-card-id="<%= @card.id %>">
+  <a data-action="icon#like" href="#" class="like_btn">
     <% if @card.favorited_by?(current_user) %>
-      <i class="fas fa-thumbs-up"></i>
+      <i data-icon-target="thumb" class="fas fa-thumbs-up"></i>
     <% else %>
-      <i class="far fa-thumbs-up"></i>
+      <i data-icon-target="thumb" class="far fa-thumbs-up"></i>
     <% end %>
   </a>
 </h1>
+
 <p>
   <%= @card.content %>
 </p>
