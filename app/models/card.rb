@@ -7,4 +7,8 @@ class Card < ApplicationRecord
 
   has_many :favorite_cards
   has_many :users, through: :favorite_cards
+
+  def favorited_by?(user)
+    users.include?(user)
+  end
 end

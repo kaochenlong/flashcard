@@ -13,13 +13,13 @@ document.addEventListener('turbolinks:load', () => {
       ax.post(`/cards/${cardId}/like`)
         .then(function(resp) {
           if (resp.data.status == "0") {
-            // 白
-            icon.classList.remove('far')
-            icon.classList.add('fas')
-          } else {
             // 黑
             icon.classList.remove('fas')
             icon.classList.add('far')
+          } else {
+            // 白
+            icon.classList.remove('far')
+            icon.classList.add('fas')
           }
         })
         .catch(function(err) {
