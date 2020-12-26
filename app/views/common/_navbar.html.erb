@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
   <%= current_user.email %>
   <%= link_to '登出', destroy_user_session_path, method: 'delete'	%>
+  <%= link_to '匯入', import_cards_path %>
 <% else %>
   <%= link_to '註冊', new_user_registration_path %>
   <%= link_to '登入', new_user_session_path %>

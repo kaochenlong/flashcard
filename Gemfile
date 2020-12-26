@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise', '~> 4.7', '>= 4.7.3'
+gem 'nokogiri', '~> 1.10', '>= 1.10.10'
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

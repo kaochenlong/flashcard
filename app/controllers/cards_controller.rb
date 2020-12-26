@@ -2,8 +2,25 @@ class CardsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_my_card, only: [:edit, :update, :destroy]
 
+  def import
+    # 匯入！
+    require 'open-uri'
+    result = Nokogiri::HTML(open("https://www.tenlong.com.tw/zh_tw/recent_bestselling?range=7"))
+    top10 = result.css('.single-book .title a').first(10)
+
+    count = 0
+    top10.each.with_index do |book, idx|
+      current_user.cards.find_or_create_by(content: book.text) do |b|
+        b.title = "top #{idx + 1}"
+        count += 1
+      end
+    end
+
+    redirect_to root_path, notice: "#{count} 張卡片已匯入"
+  end
+
   def index
-    @cards = Card.order(id: :desc)
+    @cards = Card.page(params[:page]).per(10).order(id: :desc)
   end
 
   def show

@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   resources :cards do
     member do
-      post :like
+      post :like  # /cards/2/like
+    end
+
+    collection do
+      get :import  # /cards/import
     end
 
     resources :comments, shallow: true,
