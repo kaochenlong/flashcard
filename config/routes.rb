@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
     collection do
       get :import  # /cards/import
+      get :search  # /cards/search
     end
 
     resources :comments, shallow: true,

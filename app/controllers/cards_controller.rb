@@ -2,6 +2,11 @@ class CardsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_my_card, only: [:edit, :update, :destroy]
 
+  def search
+    keyword = params[:keyword]
+    @cards = Card.where("title like '%#{keyword}%' or content like '%#{keyword}%'").page(params[:page]).per(3)
+  end
+
   def import
     # 匯入！
     # JOB!
