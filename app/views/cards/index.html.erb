@@ -19,6 +19,7 @@
 
     <div class="card-body">
       <p><%= card.content %></p>
+      <%= image_tag card.photo.variant(resize_to_limit: [200, 200])  if card.photo.attached? %>
     </div>
   </div>
 <% end %>

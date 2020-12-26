@@ -70,7 +70,7 @@ class CardsController < ApplicationController
 
   private
   def card_params
-    params.require(:card).permit(:title, :content)
+    params.require(:card).permit(:title, :content, :photo)
   end
 
   def find_my_card
