@@ -4,19 +4,10 @@ class CardsController < ApplicationController
 
   def import
     # 匯入！
-    require 'open-uri'
-    result = Nokogiri::HTML(open("https://www.tenlong.com.tw/zh_tw/recent_bestselling?range=7"))
-    top10 = result.css('.single-book .title a').first(10)
+    # JOB!
+    TenlongJob.set(wait: 5.seconds).perform_later(current_user)
 
-    count = 0
-    top10.each.with_index do |book, idx|
-      current_user.cards.find_or_create_by(content: book.text) do |b|
-        b.title = "top #{idx + 1}"
-        count += 1
-      end
-    end
-
-    redirect_to root_path, notice: "#{count} 張卡片已匯入"
+    redirect_to root_path, notice: "卡片已匯入"
   end
 
   def index

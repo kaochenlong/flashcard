@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_19_082553) do
+ActiveRecord::Schema.define(version: 2020_12_26_075408) do
 
   create_table "cards", force: :cascade do |t|
     t.string "title"
@@ -29,6 +29,21 @@ ActiveRecord::Schema.define(version: 2020_12_19_082553) do
     t.datetime "deleted_at"
     t.index ["card_id"], name: "index_comments_on_card_id"
     t.index ["deleted_at"], name: "index_comments_on_deleted_at"
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at", precision: 6
+    t.datetime "updated_at", precision: 6
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "favorite_cards", force: :cascade do |t|
