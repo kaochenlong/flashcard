@@ -4,7 +4,7 @@ class CardsController < ApplicationController
 
   def search
     keyword = params[:keyword]
-    @cards = Card.where("title like '%#{keyword}%' or content like '%#{keyword}%'").page(params[:page]).per(3)
+    @cards = Card.search(keyword).page(params[:page]).per(3)
   end
 
   def import

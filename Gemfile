@@ -29,6 +29,7 @@ gem 'daemons', '~> 1.3', '>= 1.3.1'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'foreman', '~> 0.87.2'
+  gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
 end
 
 group :development do
